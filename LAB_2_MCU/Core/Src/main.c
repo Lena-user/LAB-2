@@ -90,6 +90,8 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -232,7 +234,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	}
 	if (counter == 50)
 	{
-		displayNumber(1);
+		displayNumber(2);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
 	}
