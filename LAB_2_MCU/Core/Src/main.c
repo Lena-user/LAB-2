@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "displayLed.h"
-#include "timer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -89,20 +88,19 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_TIM2_Init();
   MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim2);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+  HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+  /* USER CODE BEGIN 2 */
+  HAL_TIM_Base_Start_IT(&htim2);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-	  HAL_Delay(1000);
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
   }
@@ -232,9 +230,49 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 200;
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	counter = counter > 0 ? counter - 1 : 200;
+	if (counter == 100 || counter == 200)
+		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+	if (counter == 200)
+	{
+		displayNumber(1);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+	}
+	if (counter == 150)
+	{
+		displayNumber(2);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+	}
+	if (counter == 100)
+	{
+		displayNumber(3);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+	}
+	if (counter == 50)
+	{
+		displayNumber(0);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+	}
+	if (counter > 0)
+	{
+		counter--;
+		if (counter <= 0)
+			counter = 200;
+	}
 }
 /* USER CODE END 4 */
 
