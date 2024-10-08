@@ -553,14 +553,13 @@ int main(void)
  800049c:	f44f 7180 	mov.w	r1, #256	; 0x100
  80004a0:	4805      	ldr	r0, [pc, #20]	; (80004b8 <main+0x4c>)
  80004a2:	f000 fd2b 	bl	8000efc <HAL_GPIO_WritePin>
-  HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
  80004a6:	2201      	movs	r2, #1
- 80004a8:	2140      	movs	r1, #64	; 0x40
- 80004aa:	4803      	ldr	r0, [pc, #12]	; (80004b8 <main+0x4c>)
- 80004ac:	f000 fd26 	bl	8000efc <HAL_GPIO_WritePin>
+ 80004a8:	f44f 7100 	mov.w	r1, #512	; 0x200
+ 80004ac:	4802      	ldr	r0, [pc, #8]	; (80004b8 <main+0x4c>)
+ 80004ae:	f000 fd25 	bl	8000efc <HAL_GPIO_WritePin>
   while (1)
- 80004b0:	e7fe      	b.n	80004b0 <main+0x44>
- 80004b2:	bf00      	nop
+ 80004b2:	e7fe      	b.n	80004b2 <main+0x46>
  80004b4:	2000002c 	.word	0x2000002c
  80004b8:	40010800 	.word	0x40010800
 
