@@ -12,8 +12,7 @@ C_SRCS += \
 ../Core/Src/syscalls.c \
 ../Core/Src/sysmem.c \
 ../Core/Src/system_stm32f1xx.c \
-../Core/Src/timer.c \
-../Core/Src/update7Seg.c 
+../Core/Src/timer.c 
 
 OBJS += \
 ./Core/Src/displayLed.o \
@@ -23,8 +22,7 @@ OBJS += \
 ./Core/Src/syscalls.o \
 ./Core/Src/sysmem.o \
 ./Core/Src/system_stm32f1xx.o \
-./Core/Src/timer.o \
-./Core/Src/update7Seg.o 
+./Core/Src/timer.o 
 
 C_DEPS += \
 ./Core/Src/displayLed.d \
@@ -34,8 +32,7 @@ C_DEPS += \
 ./Core/Src/syscalls.d \
 ./Core/Src/sysmem.d \
 ./Core/Src/system_stm32f1xx.d \
-./Core/Src/timer.d \
-./Core/Src/update7Seg.d 
+./Core/Src/timer.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

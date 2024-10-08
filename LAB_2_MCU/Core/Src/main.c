@@ -23,7 +23,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "displayLed.h"
-#include "update7Seg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -100,7 +99,7 @@ int main(void)
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-  HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -231,43 +230,63 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+int led_Buffer[4] = {1, 2, 3, 4};
+void update7SEG(int index)
+{
+	switch (index % 4) {
+		case 0:
+			displayNumber(led_Buffer[0]);
+			break;
+		case 1:
+			displayNumber(led_Buffer[1]);
+			break;
+		case 2:
+			displayNumber(led_Buffer[2]);
+			break;
+		case 3:
+			displayNumber(led_Buffer[3]);
+			break;
+		default:
+			break;
+	}
+}
+
 int counter = 200;
-int index = 0;
+int led_index = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (counter == 200)
 	{
-		update7SEG(index);
+		update7SEG(led_index++);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 	}
 	else if (counter == 150)
 	{
-		update7SEG(index);
+		update7SEG(led_index++);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 	}
 	else if (counter == 100)
 	{
-		update7SEG(index);
+		update7SEG(led_index++);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 	}
 	else if (counter == 50)
 	{
-		update7SEG(index);
+		update7SEG(led_index++);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, RESET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
 	}
-	index = index >= 4 ? 0 : index + 1;
 	if (counter > 0)
 	{
 		counter--;
