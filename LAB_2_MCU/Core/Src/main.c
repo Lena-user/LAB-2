@@ -88,10 +88,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_TIM2_Init();
   MX_GPIO_Init();
-  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-  HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
 
@@ -99,6 +96,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
+  HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -238,34 +239,34 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	if (counter == 200)
 	{
 		displayNumber(1);
-		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 	}
-	if (counter == 150)
+	else if (counter == 150)
 	{
 		displayNumber(2);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 	}
-	if (counter == 100)
+	else if (counter == 100)
 	{
 		displayNumber(3);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 	}
-	if (counter == 50)
+	else if (counter == 50)
 	{
 		displayNumber(0);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
 	}
 	if (counter > 0)
 	{
