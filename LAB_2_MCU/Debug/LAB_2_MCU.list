@@ -871,9 +871,8 @@ static void MX_GPIO_Init(void)
  8000670:	40010c00 	.word	0x40010c00
 
 08000674 <update7SEG>:
+
 /* USER CODE BEGIN 4 */
-int counter = 200;
-int led_index = 0;
 int led_Buffer[4] = {1, 2, 3, 4};
 void update7SEG(int index)
 {
@@ -939,10 +938,12 @@ void update7SEG(int index)
  80006de:	46bd      	mov	sp, r7
  80006e0:	bd80      	pop	{r7, pc}
  80006e2:	bf00      	nop
- 80006e4:	20000004 	.word	0x20000004
+ 80006e4:	20000000 	.word	0x20000000
 
 080006e8 <HAL_TIM_PeriodElapsedCallback>:
 
+int counter = 200;
+int led_index = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
  80006e8:	b580      	push	{r7, lr}
@@ -1120,7 +1121,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
  800082a:	46bd      	mov	sp, r7
  800082c:	bd80      	pop	{r7, pc}
  800082e:	bf00      	nop
- 8000830:	20000000 	.word	0x20000000
+ 8000830:	20000010 	.word	0x20000010
  8000834:	2000003c 	.word	0x2000003c
  8000838:	40010800 	.word	0x40010800
 

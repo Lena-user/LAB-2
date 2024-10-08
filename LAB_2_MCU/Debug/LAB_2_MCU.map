@@ -2600,11 +2600,11 @@ LOAD c:/st/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000000                _sdata = .
  *(.data)
  *(.data*)
- .data.counter  0x0000000020000000        0x4 ./Core/Src/main.o
-                0x0000000020000000                counter
  .data.led_Buffer
-                0x0000000020000004       0x10 ./Core/Src/main.o
-                0x0000000020000004                led_Buffer
+                0x0000000020000000       0x10 ./Core/Src/main.o
+                0x0000000020000000                led_Buffer
+ .data.counter  0x0000000020000010        0x4 ./Core/Src/main.o
+                0x0000000020000010                counter
  .data.SystemCoreClock
                 0x0000000020000014        0x4 ./Core/Src/system_stm32f1xx.o
                 0x0000000020000014                SystemCoreClock
