@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "displayLed.h"
+#include "update7Seg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -231,43 +232,42 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 200;
-
+int index = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if (counter == 100 || counter == 200)
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	if (counter == 200)
 	{
-		displayNumber(1);
+		update7SEG(index);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
 	}
 	else if (counter == 150)
 	{
-		displayNumber(2);
+		update7SEG(index);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
 	}
 	else if (counter == 100)
 	{
-		displayNumber(3);
+		update7SEG(index);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, SET);
 	}
 	else if (counter == 50)
 	{
-		displayNumber(0);
+		update7SEG(index);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 		HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
+		HAL_GPIO_WritePin(EN3_GPIO_Port, EN0_Pin, RESET);
 	}
+	index = index >= 4 ? 0 : index + 1;
 	if (counter > 0)
 	{
 		counter--;
