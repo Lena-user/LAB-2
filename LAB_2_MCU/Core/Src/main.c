@@ -122,73 +122,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-  setTimer1(100);
-  setTimer2(100);
-  int led_index = 0;
-  int hour = 8;
-  int minute = 59;
-  int second = 55;
-  updateClockBuffer(hour, minute);
+  setTimer2(1000);
   while (1)
   {
 	  if (flag2 == 1)
 	  {
-		  setTimer2(100);
-		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  second++;
-		  if (second >= 60)
-		  {
-			  second = 0;
-			  minute++;
-		  }
-		  if (minute >= 60)
-		  {
-			  minute = 0;
-			  hour++;
-		  }
-		  if (hour >= 24)
-			  hour = 0;
-		  updateClockBuffer(hour, minute);
-	  }
-	  if (flag1 == 0)
-	  {
-		  update7SEG(led_index++);
-		  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
-		  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-		  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-		  setFlag1(4);
-	  }
-	  if (flag1 == 1)
-	  {
-		  update7SEG(led_index++);
-		  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-		  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
-		  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-		  setFlag1(4);
-	  }
-	  if (flag1 == 2)
-	  {
-		  update7SEG(led_index++);
-		  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-		  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-		  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
-		  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-		  setFlag1(4);
-	  }
-	  if (flag1 == 3)
-	  {
-		  update7SEG(led_index++);
-		  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-		  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-		  HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-		  HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
-		  setFlag1(4);
+		  setTimer2(2000);
+		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 	  }
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */

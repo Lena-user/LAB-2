@@ -9,18 +9,19 @@
 
 int counter1 = 0;
 int counter2 = 0;
+int cycle = 10;
 int flag1 = 0;
 int flag2 = 0;
 
 void setTimer1(int duration)
 {
-	counter1 = duration;
+	counter1 = duration / cycle;
 	flag1 = 0;
 }
 
 void setTimer2(int duration)
 {
-	counter2 = duration;
+	counter2 = duration / cycle;
 	flag2 = 0;
 }
 
