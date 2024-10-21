@@ -128,11 +128,11 @@ int main(void)
  8000172:	2b01      	cmp	r3, #1
  8000174:	d1fb      	bne.n	800016e <main+0x22>
 	  {
-		  setTimer2(2000);
- 8000176:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
+		  setTimer2(1000);
+ 8000176:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  800017a:	f000 f99f 	bl	80004bc <setTimer2>
-		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
- 800017e:	2120      	movs	r1, #32
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+ 800017e:	2110      	movs	r1, #16
  8000180:	4803      	ldr	r0, [pc, #12]	; (8000190 <main+0x44>)
  8000182:	f000 fd23 	bl	8000bcc <HAL_GPIO_TogglePin>
 	  if (flag2 == 1)

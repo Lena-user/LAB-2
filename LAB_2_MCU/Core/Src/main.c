@@ -127,8 +127,8 @@ int main(void)
   {
 	  if (flag2 == 1)
 	  {
-		  setTimer2(2000);
-		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		  setTimer2(1000);
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  }
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
