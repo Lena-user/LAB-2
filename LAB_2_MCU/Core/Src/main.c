@@ -126,8 +126,8 @@ int main(void)
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
   HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-  setTimer1(100);
-  setTimer2(100);
+  setTimer1(1000);
+  setTimer2(1000);
   int led_index = 0;
   int hour = 8;
   int minute = 59;
@@ -137,7 +137,7 @@ int main(void)
   {
 	  if (flag2 == 1)
 	  {
-		  setTimer2(100);
+		  setTimer2(1000);
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		  second++;
 		  if (second >= 60)

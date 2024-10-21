@@ -1,4 +1,4 @@
-timer.c:15:6:setTimer1	16	static
-timer.c:21:6:setTimer2	16	static
-timer.c:27:6:setFlag1	16	static
-timer.c:32:6:timerRun	8	static
+timer.c:16:6:setTimer1	16	static
+timer.c:22:6:setTimer2	16	static
+timer.c:28:6:setFlag1	16	static
+timer.c:33:6:timerRun	8	static
