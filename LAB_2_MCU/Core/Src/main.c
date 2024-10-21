@@ -132,6 +132,7 @@ int main(void)
   int hour = 8;
   int minute = 59;
   int second = 55;
+  updateClockBuffer(hour, minute);
   while (1)
   {
 	  if (flag2 == 1)
@@ -151,8 +152,8 @@ int main(void)
 		  }
 		  if (hour >= 24)
 			  hour = 0;
+		  updateClockBuffer(hour, minute);
 	  }
-	  updateClockBuffer(hour, minute);
 	  if (flag1 == 0)
 	  {
 		  update7SEG(led_index++);
