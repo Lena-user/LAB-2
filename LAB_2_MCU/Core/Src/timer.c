@@ -32,11 +32,11 @@ void setFlag1(int state)
 
 void timerRun()
 {
-	if (counter2 > 0)
+	if (counter2 >= 0)
 		counter2--;
 	else
 		flag2 = 1;
-	if (counter1 > 0)
+	if (counter1 >= 0)
 		counter1--;
 	else
 		setTimer1(1000);

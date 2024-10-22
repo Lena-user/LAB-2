@@ -1682,11 +1682,11 @@ void timerRun()
 {
  8000abc:	b580      	push	{r7, lr}
  8000abe:	af00      	add	r7, sp, #0
-	if (counter2 > 0)
+	if (counter2 >= 0)
  8000ac0:	4b1d      	ldr	r3, [pc, #116]	; (8000b38 <timerRun+0x7c>)
  8000ac2:	681b      	ldr	r3, [r3, #0]
  8000ac4:	2b00      	cmp	r3, #0
- 8000ac6:	dd05      	ble.n	8000ad4 <timerRun+0x18>
+ 8000ac6:	db05      	blt.n	8000ad4 <timerRun+0x18>
 		counter2--;
  8000ac8:	4b1b      	ldr	r3, [pc, #108]	; (8000b38 <timerRun+0x7c>)
  8000aca:	681b      	ldr	r3, [r3, #0]
@@ -1699,11 +1699,11 @@ void timerRun()
  8000ad4:	4b19      	ldr	r3, [pc, #100]	; (8000b3c <timerRun+0x80>)
  8000ad6:	2201      	movs	r2, #1
  8000ad8:	601a      	str	r2, [r3, #0]
-	if (counter1 > 0)
+	if (counter1 >= 0)
  8000ada:	4b19      	ldr	r3, [pc, #100]	; (8000b40 <timerRun+0x84>)
  8000adc:	681b      	ldr	r3, [r3, #0]
  8000ade:	2b00      	cmp	r3, #0
- 8000ae0:	dd05      	ble.n	8000aee <timerRun+0x32>
+ 8000ae0:	db05      	blt.n	8000aee <timerRun+0x32>
 		counter1--;
  8000ae2:	4b17      	ldr	r3, [pc, #92]	; (8000b40 <timerRun+0x84>)
  8000ae4:	681b      	ldr	r3, [r3, #0]
